@@ -5,7 +5,7 @@ Run the app using the command
 __npm install__
 
 
-__nodemon app__
+__npm run dev__
 
 
 heroku URL : 
