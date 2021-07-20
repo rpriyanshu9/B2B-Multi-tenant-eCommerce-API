@@ -1,8 +1,10 @@
+require('dotenv').config()
 require('./db/mongoose')
 const express = require('express')
 const app = express()
 const ownerRoutes = require('./routes/owner')
 const customerRoutes = require('./routes/customer')
+const port = process.env.PORT || 3000
 
 app.use(express.json())
 
@@ -12,6 +14,6 @@ app.use('/owner', ownerRoutes)
 //End-customer oriented routes
 app.use('/customer', customerRoutes)
 
-app.listen(3000, () => {
-    console.log("Server up on port 3000.")
+app.listen(port, () => {
+    console.log(`Server up on port ${port}.`)
 })
