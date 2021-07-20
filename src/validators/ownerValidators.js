@@ -5,7 +5,8 @@ const { body } = require("express-validator");
 exports.register = [
     body('email', 'Email field should not be empty').not().isEmpty(),
     body('password', 'Password field should not be empty').not().isEmpty(),
-    body('email', 'Email should be of correct format').isEmail()
+    body('email', 'Email should be of correct format').isEmail(),
+    body('password', 'Password\'s length should be atlest 6').isLength({ min: 6 })
 ]
 
 exports.addNewProduct = [
