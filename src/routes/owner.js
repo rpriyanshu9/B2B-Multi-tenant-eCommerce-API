@@ -5,7 +5,7 @@ const ownerValidators = require('../validators/ownerValidators')
 const ownerController = require('../controllers/owner_controller')
 
 //Add account
-router.post('/register', ownerController.register)
+router.post('/register', ownerValidators.register, ownerController.register)
 
 //Add products
 router.post('/addproduct', ownerAuth, ownerValidators.addNewProduct, ownerController.addNewProduct)
