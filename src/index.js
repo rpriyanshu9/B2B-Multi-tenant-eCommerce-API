@@ -6,7 +6,10 @@ const customerRoutes = require('./routes/customer')
 
 app.use(express.json())
 
+//Owner oriented routes
 app.use('/owner', ownerRoutes)
+
+//End-customer oriented routes
 app.use('/customer', customerRoutes)
 
 app.listen(3000, () => {

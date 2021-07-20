@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Schema = mongoose.Schema
 
+//Owner schema
+
 const ownerSchema = new Schema({
     email: {
         type: String,
@@ -22,11 +24,15 @@ const ownerSchema = new Schema({
     }]
 })
 
+//Virtual added to link products created by certain admin/owner
+
 ownerSchema.virtual('products', {
     ref: 'Product',
     localField: '_id',
     foreignField: 'createdBy'
 })
+
+//Generation auth token for jwt based authentication
 
 ownerSchema.methods.generateAuthToken = async function () {
     const owner = this
@@ -35,6 +41,8 @@ ownerSchema.methods.generateAuthToken = async function () {
     await owner.save()
     return token
 }
+
+//Pre hook for save used for hashing password
 
 ownerSchema.pre('save', async function (next) {
     const owner = this

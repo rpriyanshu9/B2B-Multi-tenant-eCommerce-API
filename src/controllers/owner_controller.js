@@ -3,9 +3,12 @@ const Product = require('../models/product')
 const Order = require('../models/order')
 const { validationResult } = require('express-validator')
 
+//Registering new owner
+
 const register = async (req, res) => {
     try {
 
+        //Validating req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
@@ -44,9 +47,12 @@ const register = async (req, res) => {
     }
 }
 
+//Adding new product
+
 const addNewProduct = async (req, res) => {
     try {
 
+        //Validating req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
@@ -75,6 +81,8 @@ const addNewProduct = async (req, res) => {
         })
     }
 }
+
+//Viewing orders
 
 const viewOrders = async (req, res) => {
     try {

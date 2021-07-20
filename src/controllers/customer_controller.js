@@ -4,8 +4,12 @@ const Product = require('../models/product')
 const Order = require('../models/order')
 const { validationResult } = require('express-validator')
 
+//Registering new customer
+
 const register = async (req, res) => {
     try {
+
+        //Validating req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
@@ -44,9 +48,12 @@ const register = async (req, res) => {
     }
 }
 
+//Logging in customer
+
 const login = async (req, res) => {
     try {
 
+        //Validating req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
@@ -71,6 +78,8 @@ const login = async (req, res) => {
     }
 }
 
+//Browse/Show all products
+
 const browseProducts = async (req, res) => {
     try {
         const products = await Product.find()
@@ -90,9 +99,12 @@ const browseProducts = async (req, res) => {
     }
 }
 
+//Placing order
+
 const orderProducts = async (req, res) => {
     try {
 
+        //Validating req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
@@ -100,7 +112,7 @@ const orderProducts = async (req, res) => {
             });
         }
 
-        //Assumming req.body.products contain the list of objectID of individual product
+        //Assumming req.body.products contain the list of objectID of individual product with subTotal and qty from front-end
         const products = req.body.products.map((elem) => {
             return {
                 product: mongoose.Types.ObjectId(elem.product),
@@ -108,8 +120,6 @@ const orderProducts = async (req, res) => {
                 quantity: elem.quantity
             }
         })
-
-
 
         const order = new Order({
             customer: req.customer,
@@ -135,6 +145,8 @@ const orderProducts = async (req, res) => {
         })
     }
 }
+
+//Viewing orders of single/current customer
 
 const viewOrders = async (req, res) => {
     try {

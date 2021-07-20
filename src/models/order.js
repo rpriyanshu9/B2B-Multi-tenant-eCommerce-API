@@ -1,12 +1,20 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+//Order schema
+
 const orderSchema = new Schema({
+
+    //Storing customer reference id
+
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'Customer',
         required: true
     },
+
+    //Products info
+
     products: [{
         product: {
             type: Schema.Types.ObjectId,
@@ -16,6 +24,9 @@ const orderSchema = new Schema({
         quantity: { type: Number, required: true },
         subTotal: { type: Number, required: true }
     }],
+
+    //Total value of order
+
     total: {
         type: Number,
         default: 0

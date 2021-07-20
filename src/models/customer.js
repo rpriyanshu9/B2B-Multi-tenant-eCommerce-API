@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
 
+//Customer model schema
+
 const customerSchema = new Schema({
     email: {
         type: String,
@@ -22,13 +24,18 @@ const customerSchema = new Schema({
     }]
 })
 
+//Generation auth token for jwt based authentication
+
 customerSchema.methods.generateAuthToken = async function () {
     const customer = this
     const token = await jwt.sign({ _id: customer._id.toString() }, process.env.CUSTOMER_SECRET_KEY)
+    //Adding token to customer document
     customer.tokens = customer.tokens.concat({ token })
     await customer.save()
     return token
 }
+
+//Helper function for logging in customer
 
 customerSchema.statics.findByCredentials = async (email, password) => {
     const customer = await Customer.findOne({ email })
@@ -41,6 +48,8 @@ customerSchema.statics.findByCredentials = async (email, password) => {
     }
     return customer
 }
+
+//Pre hook for save used for hashing password
 
 customerSchema.pre('save', async function (next) {
     const customer = this

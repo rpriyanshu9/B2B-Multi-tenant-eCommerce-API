@@ -1,5 +1,7 @@
 const { body, check } = require("express-validator");
 
+//Validations for request body of end customer related endpoints
+
 exports.register = [
     body('email', 'Email field should not be empty').not().isEmpty(),
     body('password', 'Password field should not be empty').not().isEmpty(),
