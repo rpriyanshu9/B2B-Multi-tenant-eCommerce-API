@@ -102,4 +102,5 @@ Authorization = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGY2ZTcx
 
 ---
 
-__Use postman to observe the JSON responses and send JSON requests__
+## Postman Collection
+Link : https://bit.ly/2Tnj9l9
