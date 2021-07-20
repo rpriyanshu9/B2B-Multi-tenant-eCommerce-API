@@ -11,7 +11,7 @@ __npm run dev__
 heroku URL : 
 https://rpriy-ecommerce-api.herokuapp.com/
 
-Wherever auth is needed pass the jwt token returned after registering or logging in, in the header with key as Authorization and value as Bearer <token> (space in between Bearer and token).  
+Wherever auth is needed pass the jwt token returned after registering or logging in, in the header with key as `Authorization` and value as `Bearer <token>` (space in between Bearer and token).  
 Example:
 ```
 Authorization = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGY2ZTcxYTI4NTNhODA4OThlNmE0ZmUiLCJpYXQiOjE2MjY3OTM3NTR9.UWiOdht2OZcF4XEdEvIDsekfzl8IB0DiztfmC0C-2VM
