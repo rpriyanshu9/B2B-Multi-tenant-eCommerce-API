@@ -1,10 +1,8 @@
 # B2B-Multi-tenant-eCommerce-API
 
-**Accepts and Responds JSON requests**
-
 Run the app using the command 
 
-__npm init__
+__npm install__
 
 
 __nodemon app__
